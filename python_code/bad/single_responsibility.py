@@ -11,7 +11,7 @@ class IEmail(object):
         pass
 
     @abstractmethod
-    def setReceiver(self, receiver):
+   (self, receiver):
         pass
 
     @abstractmethod
@@ -33,7 +33,7 @@ class Email(IEmail):
         else:
             self.__sender = sender
 
-    def setReceiver(self, receiver):
+   (self, receiver):
         if self.protocol == 'IM':
             self.__receiver = ''.join(["I'm ", receiver])
         else:
@@ -56,7 +56,7 @@ def main():
     email.setSender('qmal')
     email.setReceiver('james')
     email.setContent('Hello, there!')
-    print email
+    print(email)
 
 if __name__ == '__main__':
     main()
