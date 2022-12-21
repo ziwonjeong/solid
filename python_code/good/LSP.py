@@ -6,23 +6,29 @@
 # `Prisoner`. The cause is that these two classes "behave" differently.
 # How to fix it? Maybe a better naming will do the trick:
 
-class FreeMan(object):
+# class FreeMan(object):
 
-    def __init__(self, position):
-        self.position = position
+#     def __init__(self, position):
+#         self.position = position
+
+#     def walk_north(self, dist):
+#         self.position[1] += dist
+
+#     def walk_east(self, dist):
+#         self.position[0] += dist
+
+# "is-a" relationship no longer holds since a `Prisoner` is not a `FreeMan`.
+class Prisoner(object):
+    PRISON_LOCATION = [3, 3]
+
+    def __init__(self):
+        self.position = type(self).PRISON_LOCATION
 
     def walk_north(self, dist):
         self.position[1] += dist
 
     def walk_east(self, dist):
         self.position[0] += dist
-
-# "is-a" relationship no longer holds since a `Prisoner` is not a `FreeMan`.
-class Prisoner(object):
-    PRISON_LOCATION = (3, 3)
-
-    def __init__(self):
-        self.position = type(self).PRISON_LOCATION
 
 def main():
 

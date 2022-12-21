@@ -80,7 +80,7 @@ def main():
     work_manager = WorkManager()
     break_manager = BreakManager()
     work_manager.set_worker(Worker())
-    break_manager.set_worker(Worker())
+    break_manager.set_worker(Eatable())
     # Make normal worker works.
     work_manager.manage()
     # lunch break
@@ -88,14 +88,14 @@ def main():
 
     # super worker
     work_manager.set_worker(SuperWorker())
-    break_manager.set_worker(SuperWorker())
+    break_manager.set_worker(Eatable())
     work_manager.manage()
     break_manager.lunch_break()
 
     work_manager.set_worker(Robot())
     work_manager.manage()
 
-    break_manager.set_worker(Robot())
+    break_manager.set_worker(Eatable())
     break_manager.lunch_break()
 
 if __name__ == '__main__':
