@@ -10,32 +10,32 @@ from abc import ABCMeta, abstractmethod
 
 class IEmail(object):
     __metaclass__ = ABCMeta
-
     @abstractmethod
-    def setSender(self, sender):
+    def set_content(self, content):
         pass
 
     @abstractmethod
-   (self, receiver):
+    def set_sender(self, sender):
         pass
 
     @abstractmethod
-    def setContent(self, content):
+    def set_receiver(self, receiver):
         pass
+
 
 class IContent(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def getString(self):
+    def get_string(self):
         pass
 
-class MyContent(IContent):
 
+class MyContent(IContent):
     def __init__(self, content):
         self.content = content
 
-    def getString(self):
+    def get_string(self):
         return "<MyML>{}</MyML>".format(self.content)
 
 class Email(IEmail):
@@ -46,20 +46,21 @@ class Email(IEmail):
         self.__receiver = None
         self.__content = None
 
-    def setSender(self, sender):
-        if self.protocol == 'IM':
-            self.__sender = ''.join(["I'm ", sender])
-        else:
-            self.__sender = sender
 
-   (self, receiver):
+    def set_receiver(self, receiver):
         if self.protocol == 'IM':
             self.__receiver = ''.join(["I'm ", receiver])
         else:
             self.__receiver = receiver
 
-    def setContent(self, content):
-        self.__content = content.getString()
+    def set_sender(self, sender):
+        if self.protocol == 'IM':
+            self.__sender = ''.join(["I'm ", sender])
+        else:
+            self.__sender = sender
+
+    def set_content(self, content):
+        self.__content = content.get_string()
 
     def __repr__(self):
 
@@ -69,10 +70,10 @@ class Email(IEmail):
 
 def main():
     email = Email('IM')
-    email.setSender('qmal')
-    email.setReceiver('james')
+    email.set_sender('qmal')
+    email.set_receiver('james')
     content = MyContent('Hello, there!')
-    email.setContent(content)
+    email.set_content(content)
     print(email)
 
 if __name__ == '__main__':

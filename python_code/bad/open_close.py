@@ -11,10 +11,9 @@ class Rectangle(object):
         self.width = width
         self.height = height
 
+
 class AreaCalculator(object):
-
     def __init__(self, shapes):
-
         assert isinstance(shapes, list), "`shapes` should be of type `list`."
         self.shapes = shapes
 
@@ -23,7 +22,6 @@ class AreaCalculator(object):
         total = 0
         for shape in self.shapes:
             total += shape.width * shape.height
-
         return total
 
 def main():
@@ -32,5 +30,4 @@ def main():
     print("The total area is: "), calculator.total_area
 
 if __name__ == '__main__':
-
     main()
