@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import print_function, absolute_import
-from .good import __all__ as all_submodules
+from good import __all__ as all_submodules
 import sys
 
 def main(argv):
